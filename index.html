@@ -1,0 +1,392 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verdant Weather | Cuaca Dunia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <a href="#" class="brand">
+                <span class="brand-icon">✦</span>
+                <span>verdant<span class="green">weather</span></span>
+            </a>
+
+            <p class="menu-label">MENU UTAMA</p>
+
+            <a href="#weather" class="nav-item active">
+                <span>◉</span>
+                Cuaca saat ini
+            </a>
+
+            <a href="#forecast" class="nav-item">
+                <span>▦</span>
+                Prakiraan 7 hari
+            </a>
+
+            <div class="sidebar-note">
+                <div class="note-icon">❋</div>
+
+                <h4>Stay ahead of the weather.</h4>
+
+                <p>
+                    Rencanakan harimu dengan informasi
+                    cuaca yang mudah dipahami.
+                </p>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                Data cuaca langsung
+                <small>Didukung oleh kami</small>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="weather">
+
+            <!-- HEADER -->
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">DASHBOARD CUACA</p>
+
+                    <h1>
+                        Langit hari ini,
+                        <span class="green">lebih jelas.</span>
+                    </h1>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <span class="live-badge">
+                        <span class="status-dot"></span>
+                        Live weather
+                    </span>
+
+                    <button id="unitToggle" class="unit-button">
+                        °C
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- SEARCH -->
+            <section class="search-panel">
+
+                <div class="search-description">
+
+                    <div class="search-icon">⌕</div>
+
+                    <div>
+                        <h3>Jelajahi cuaca dunia</h3>
+
+                        <p>
+                            Cari kota, wilayah, atau negara mana pun.
+                        </p>
+                    </div>
+
+                </div>
+
+                <form id="searchForm" class="search-form">
+
+                    <input
+                        type="text"
+                        id="cityInput"
+                        placeholder="Contoh: Jakarta, Tokyo, London..."
+                        autocomplete="off"
+                        required
+                    >
+
+                    <button type="submit" id="searchButton">
+                        Cari lokasi ↗
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- STATUS MESSAGE -->
+            <div id="message" class="message" role="status"></div>
+
+
+            <!-- WEATHER CARDS -->
+            <section class="weather-grid">
+
+                <!-- CURRENT WEATHER -->
+                <article class="card current-card">
+
+                    <div class="card-header">
+
+                        <p class="section-label">
+                            KONDISI SEKARANG
+                        </p>
+
+                        <span class="current-badge">
+                            <span class="status-dot"></span>
+                            TERKINI
+                        </span>
+
+                    </div>
+
+
+                    <div class="location-header">
+
+                        <div>
+                            <h2 id="locationName">Jakarta</h2>
+
+                            <p id="locationDetail">
+                                Indonesia
+                            </p>
+                        </div>
+
+                        <div class="location-icon">⌖</div>
+
+                    </div>
+
+
+                    <div class="temperature-section">
+
+                        <div class="temperature-wrapper">
+
+                            <span id="temperature" class="temperature">
+                                --
+                            </span>
+
+                            <span id="temperatureUnit" class="degree">
+                                °C
+                            </span>
+
+                        </div>
+
+                        <div class="weather-description">
+
+                            <div id="weatherIcon" class="weather-icon">
+                                🌤️
+                            </div>
+
+                            <h3 id="condition">
+                                Memuat cuaca...
+                            </h3>
+
+                            <p id="feelsLike">
+                                Terasa seperti --°
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="divider"></div>
+
+
+                    <!-- WEATHER DETAILS -->
+                    <div class="metrics-grid">
+
+                        <div class="metric">
+
+                            <div class="metric-icon">☂</div>
+
+                            <div>
+                                <p>Curah hujan</p>
+                                <strong id="rain">-- mm</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-icon">♧</div>
+
+                            <div>
+                                <p>Kelembapan</p>
+                                <strong id="humidity">--%</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-icon">➤</div>
+
+                            <div>
+                                <p>Kecepatan angin</p>
+                                <strong id="wind">-- km/j</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-icon">◉</div>
+
+                            <div>
+                                <p>Tekanan udara</p>
+                                <strong id="pressure">-- hPa</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p id="updatedAt" class="updated-text">
+                        Memuat waktu pembaruan...
+                    </p>
+
+                </article>
+
+
+                <!-- SUNRISE AND SUNSET -->
+                <article class="card sun-card">
+
+                    <div class="card-header">
+
+                        <p class="section-label">
+                            SIKLUS MATAHARI
+                        </p>
+
+                        <span class="sun-badge">
+                            ☼ Hari ini
+                        </span>
+
+                    </div>
+
+                    <h2>Terang dan gelap</h2>
+
+                    <p class="muted">
+                        Waktu matahari terbit dan terbenam
+                        di lokasi pilihanmu.
+                    </p>
+
+
+                    <div class="sun-visual">
+
+                        <div class="sun-orbit">
+                            <div class="orbit-line"></div>
+                            <span class="sun-ball">☼</span>
+                            <span class="horizon">⌁</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="sun-times">
+
+                        <div class="sun-time-card">
+
+                            <span class="sun-time-icon">↗</span>
+
+                            <div>
+                                <p>MATAHARI TERBIT</p>
+                                <strong id="sunrise">--:--</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="sun-time-card">
+
+                            <span class="sun-time-icon sunset">↘</span>
+
+                            <div>
+                                <p>MATAHARI TERBENAM</p>
+                                <strong id="sunset">--:--</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sun-tip">
+                        <span>✦</span>
+
+                        <p id="daylight">
+                            Memuat informasi matahari...
+                        </p>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- FORECAST -->
+            <section class="forecast-section" id="forecast">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">LIHAT KE DEPAN</p>
+                        <h2>Prakiraan 7 hari</h2>
+                    </div>
+
+                    <p class="forecast-caption">
+                        Perkiraan suhu harian
+                    </p>
+
+                </div>
+
+
+                <div id="forecastList" class="forecast-list">
+
+                    <div class="forecast-loading">
+                        Memuat prakiraan cuaca...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer>
+
+                <span class="footer-brand">
+                    ✦ verdantweather
+                </span>
+
+                <span>
+                    Informasi untuk membantumu merencanakan hari.
+                </span>
+
+                <span>
+                    Cuaca dapat berubah sewaktu-waktu.
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
